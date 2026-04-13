@@ -91,7 +91,10 @@ export default function Home() {
     setSlied(1);
     setTimes(0);
     settimer(0)
-    setCardImage(rendomeARR([...constcard.slice(0,numpercard),...constcard.slice(0,numpercard)]).map((card,i)=>{return {...card,i}}));
+    setCardImage(
+      rendomeARR([...constcard.slice(0,numpercard)
+        ,...constcard.slice(0,numpercard)])
+        .map((card,i)=>{return {...card,i}}));
   }
   function mainPag() {
     setSlied(0);
@@ -104,7 +107,6 @@ export default function Home() {
       <div className="card home" style={{left:`${slide*100}%`}}>
         <h1>
           اختبر ذكائك
-          {/* task */}
         </h1>
         <img src="/homepage/Gemini_Generated_Image_sivojwsivojwsivo.png" ></img>
         <button onClick={()=>{reblay()}}>ابدأ اللعب</button>
@@ -131,9 +133,12 @@ export default function Home() {
             {times} محاولة <span className="material-symbols-outlined">autorenew</span>
           </button>
           <button>
-            { Math.floor(timer/60)}:{timer}
+            
+                { String(Math.floor(timer/60)).length==2?String(Math.floor(timer/60)): "0"+String(Math.floor(timer/60))}
+                :
+                {String(timer%60).length==2?String(timer%60):"0"+String(timer%60)}
+
             <span className="material-symbols-outlined">timer</span>
-            {/* task */}
           </button>
         </div>
         <div className="elements" style={{gridTemplateColumns:`repeat(${numpercard/2},.1fr)`}}>
@@ -175,7 +180,9 @@ export default function Home() {
                 وقت
               </div>
               <div>
-                { Math.floor(timer/60)}:{timer}
+                { String(Math.floor(timer/60)).length==2?String(Math.floor(timer/60)): "0"+String(Math.floor(timer/60))}
+                :
+                {String(timer%60).length==2?String(timer%60):"0"+String(timer%60)}
               </div>
             </div>
           </div>
